@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevisBâtiment Pro - Devis de construction en 10 min chrono</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-blue: #2563eb;
+        --accent-green: #22c55e;
+        --light-bg: #f8fafc;
+        --dark-text: #1e293b;
+        --light-text: #64748b;
+        --white: #ffffff;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--dark-text);
+        line-height: 1.6;
+        background-color: var(--light-bg);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary-blue);
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 10px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark-text);
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-blue);
+      }
+
+      .nav-cta {
+        background-color: var(--primary-blue);
+        color: var(--white);
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .nav-cta:hover {
+        background-color: #1d4ed8;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 80px 0;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.05) 0%,
+          rgba(34, 197, 94, 0.05) 100%
+        );
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue) 0%,
+          var(--accent-green) 100%
+        );
+        border-radius: 50%;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: var(--light-text);
+        margin-bottom: 40px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-subtitle > span {
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--accent-green)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 600;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--accent-green)
+        );
+        color: var(--white);
+        padding: 16px 40px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        margin: 20px 0;
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3);
+      }
+
+      .counter {
+        background-color: var(--white);
+        padding: 15px 30px;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        margin-top: 30px;
+        box-shadow: var(--shadow);
+        font-weight: 600;
+      }
+
+      .counter i {
+        color: var(--accent-green);
+        margin-right: 10px;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* About Section */
+      .about {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: var(--light-text);
+        max-width: 700px;
+        margin: 0 auto 60px;
+        font-size: 1.1rem;
+      }
+
+      .problem-solution {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .problem,
+      .solution {
+        flex: 1;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        background-color: var(--white);
+      }
+
+      .problem {
+        border-left: 4px solid #ef4444;
+      }
+
+      .solution {
+        border-left: 4px solid var(--accent-green);
+      }
+
+      .problem h3,
+      .solution h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .problem h3 i {
+        color: #ef4444;
+        margin-right: 10px;
+      }
+
+      .solution h3 i {
+        color: var(--accent-green);
+        margin-right: 10px;
+      }
+
+      .audience {
+        display: flex;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .audience-card {
+        flex: 1;
+        padding: 40px 20px;
+        border-radius: 20px;
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        transition: transform 0.3s;
+      }
+
+      .audience-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .audience-card i {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+
+      .artisans i {
+        color: var(--primary-blue);
+      }
+      .auto-constructors i {
+        color: var(--accent-green);
+      }
+      .architects i {
+        color: #8b5cf6;
+      }
+
+      .audience-card h4 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      /* Features Section */
+      .features {
+        padding: 100px 0;
+        background-color: var(--white);
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .feature-card {
+        display: flex;
+        gap: 20px;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: var(--light-bg);
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .feature-icon {
+        min-width: 60px;
+        height: 60px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--accent-green)
+        );
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.5rem;
+      }
+
+      .feature-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        padding: 100px 0;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.05) 0%,
+          rgba(34, 197, 94, 0.05) 100%
+        );
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .testimonial-card {
+        padding: 30px;
+        border-radius: 20px;
+        background-color: var(--white);
+        box-shadow: var(--shadow);
+        position: relative;
+      }
+
+      .testimonial-card::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 5rem;
+        color: rgba(37, 99, 235, 0.1);
+        font-family: Georgia, serif;
+        line-height: 1;
+      }
+
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+        background-color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--primary-blue);
+      }
+
+      .testimonial-info h4 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .testimonial-info p {
+        color: var(--light-text);
+        font-size: 0.9rem;
+      }
+
+      .stars {
+        color: #fbbf24;
+        margin: 10px 0;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .cta-box {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 60px;
+        border-radius: 30px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--accent-green)
+        );
+        color: var(--white);
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+      }
+
+      .cta-box h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .cta-box p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      .steps {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 40px 0;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+
+      .step:not(:last-child)::after {
+        content: "→";
+        position: absolute;
+        right: -30px;
+        top: 25px;
+        font-size: 1.5rem;
+        opacity: 0.5;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--white);
+        color: var(--primary-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+
+      .step-text {
+        font-weight: 600;
+      }
+
+      /* Trust Section */
+      .trust {
+        padding: 80px 0;
+        background-color: var(--white);
+        text-align: center;
+      }
+
+      .trust-badges {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        background-color: var(--light-bg);
+        padding: 15px 30px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .partners {
+        margin-top: 60px;
+      }
+
+      .partners-grid {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .partner {
+        background-color: var(--white);
+        width: 150px;
+        height: 80px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: var(--light-text);
+        box-shadow: var(--shadow);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-text);
+        color: var(--white);
+        padding: 60px 0 30px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-logo i {
+        margin-right: 10px;
+        color: var(--accent-green);
+      }
+
+      .footer-about p {
+        opacity: 0.7;
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s;
+      }
+
+      .social-link:hover {
+        background-color: var(--primary-blue);
+      }
+
+      .footer-heading {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-heading::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--accent-green)
+        );
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: var(--white);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0.7;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .features-grid,
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .problem-solution,
+        .audience {
+          flex-direction: column;
+        }
+
+        .steps {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .step:not(:last-child)::after {
+          content: "↓";
+          right: auto;
+          top: auto;
+          bottom: -25px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">
+            <i class="fas fa-hard-hat"></i>
+            DevisBâtiment Pro
+          </a>
+          <div class="nav-links">
+            <a href="#">Fonctionnalités</a>
+            <a href="#">Comment ça marche</a>
+            <a href="#">Tarifs</a>
+            <a href="#">Témoignages</a>
+            <a href="#" class="nav-cta">Essai gratuit</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>🚀 Devis de Construction en 10 Min Chrono ?</h1>
+          <p class="hero-subtitle">
+            L'IA qui transforme vos plans en devis précis et listes de matériaux
+            !
+          </p>
+          <p class="hero-subtitle">
+            "Arrêtez de jouer aux devinettes avec votre budget construction.
+            Notre outil certifié par des artisans calcule pour vous : coûts,
+            matériaux et main-d'œuvre. Précis à <span>±8%</span>."
+          </p>
+
+          <a href="#" class="cta-button">
+            <i class="fas fa-bolt"></i> Essai gratuit - Sans carte
+          </a>
+
+          <div class="counter">
+            <i class="fas fa-bolt"></i> 7 devis générés dans l'heure
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+      <div class="container">
+        <h2 class="section-title">La solution à vos problèmes de devis</h2>
+        <p class="section-subtitle">
+          Transformez votre processus d'estimation avec notre outil intelligent
+        </p>
+
+        <div class="problem-solution">
+          <div class="problem">
+            <h3><i class="fas fa-exclamation-triangle"></i> Le problème</h3>
+            <p>
+              "68% des projets dépassent leur budget par manque d'estimation
+              fiable" (FFB 2025).
+            </p>
+            <p>
+              Les artisans perdent en moyenne 2h par devis en calculs manuels,
+              tandis que les auto-constructeurs sous-estiment souvent les coûts
+              réels.
+            </p>
+          </div>
+
+          <div class="solution">
+            <h3><i class="fas fa-lightbulb"></i> Notre solution</h3>
+            <p>
+              <strong>DevisBâtiment Pro</strong> est un moteur IA spécialisé BTP
+              qui transforme vos croquis ou dimensions en :
+            </p>
+            <ul style="padding-left: 20px; margin-top: 15px">
+              <li>Devis professionnels PDF</li>
+              <li>Liste de matériaux quantifiés (béton, carrelage, etc.)</li>
+              <li>Estimation main-d'œuvre par corps de métier</li>
+            </ul>
+            <p style="margin-top: 15px">
+              Garantie : Compatible normes RE2020 et DTU françaises.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="text-align: center; margin: 60px 0 30px; font-size: 1.8rem">
+          Pour qui ?
+        </h3>
+
+        <div class="audience">
+          <div class="audience-card artisans">
+            <i class="fas fa-tools"></i>
+            <h4>Artisans</h4>
+            <p>
+              Gagnez 5h par devis avec notre solution automatisée qui génère des
+              estimations précises en quelques minutes.
+            </p>
+          </div>
+
+          <div class="audience-card auto-constructors">
+            <i class="fas fa-home"></i>
+            <h4>Auto-constructeurs</h4>
+            <p>
+              Évitez les surprises budgétaires et optimisez vos achats de
+              matériaux avec nos calculs précis.
+            </p>
+          </div>
+
+          <div class="audience-card architects">
+            <i class="fas fa-drafting-compass"></i>
+            <h4>Architectes</h4>
+            <p>
+              Proposez des estimations fiables à vos clients dès la phase de
+              conception.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Fonctionnalités puissantes</h2>
+        <p class="section-subtitle">
+          Tout ce dont vous avez besoin pour créer des devis précis et
+          convaincants
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Saisie Éclair</h3>
+              <p>
+                Importez un plan photo ou glissez-déposez vos pièces. L'IA
+                détecte automatiquement les dimensions et crée votre modèle 3D
+                en temps réel.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Calcul Intelligent</h3>
+              <p>
+                Notre moteur cross-checke 12 fournisseurs (Leroy Merlin,
+                Point.P...) pour des prix matériaux temps réel et des
+                estimations de main d'œuvre précises.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-file-invoice"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Devis Pro en 1 Clic</h3>
+              <p>
+                Générez un devis esthétique avec votre logo, décomposé par poste
+                (main-d'œuvre incluse) et exportable en PDF ou Excel.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Commande Directe</h3>
+              <p>
+                Commandez les matériaux depuis notre plateforme avec livraison
+                optimisée et bénéficiez de tarifs préférentiels chez nos
+                partenaires.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="section-title">Ils nous font confiance</h2>
+        <p class="section-subtitle">
+          Découvrez ce que disent nos utilisateurs satisfaits
+        </p>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="testimonial-info">
+                <h4>Marc, Artisan maçon</h4>
+                <p>A réalisé 47 devis ce mois-ci</p>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>
+              "J'ai divisé mon temps de chiffrage par 5 ! En 18 ans de métier,
+              je n'ai jamais vu un outil aussi précis. Mon dernier devis de 82K€
+              était à 760€ près."
+            </p>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="testimonial-info">
+                <h4>Élodie, Auto-constructrice</h4>
+                <p>Projet de 120m² en Bretagne</p>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p>
+              "La liste de matériaux était parfaite : ni surplus ni manque. J'ai
+              évité 3 allers-retours en magasin et économisé 12% sur mon budget
+              initial !"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Essai Gratuit - Sans Carte Bancaire</h2>
+          <p>Générez votre premier devis en moins de 10 minutes</p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-text">Saisie des pièces</div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-text">Reception du devis</div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-text">Économisez 5h de travail</div>
+            </div>
+          </div>
+
+          <a href="#" class="cta-button">
+            <i class="fas fa-rocket"></i> Démarrer Maintenant
+          </a>
+
+          <p style="margin-top: 30px; font-size: 1rem; opacity: 0.8">
+            <i class="fas fa-shield-alt"></i> Précision garantie ou remboursé
+            sous 30 jours
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+      <div class="container">
+        <h2 class="section-title">Ils nous font confiance</h2>
+
+        <div class="trust-badges">
+          <div class="badge">
+            <i
+              class="fas fa-check-circle"
+              style="color: var(--accent-green)"
+            ></i>
+            Certifié par la FFB
+          </div>
+          <div class="badge">
+            <i class="fas fa-lock" style="color: var(--primary-blue)"></i>
+            RGPD conforme
+          </div>
+          <div class="badge">
+            <i class="fas fa-users" style="color: #8b5cf6"></i>
+            1 247 artisans utilisateurs
+          </div>
+        </div>
+
+        <div class="partners">
+          <h3 class="section-subtitle">Partenaires officiels</h3>
+          <div class="partners-grid">
+            <div class="partner">Leroy Merlin</div>
+            <div class="partner">Point.P</div>
+            <div class="partner">Saint-Gobain</div>
+            <div class="partner">Knauf</div>
+            <div class="partner">FFB</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <i class="fas fa-hard-hat"></i>
+              DevisBâtiment Pro
+            </div>
+            <p>
+              L'outil révolutionnaire pour les professionnels du bâtiment et les
+              auto-constructeurs qui veulent gagner du temps et de l'argent sur
+              leurs devis.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Liens rapides</h4>
+            <ul class="footer-links">
+              <li><a href="#">Accueil</a></li>
+              <li><a href="#">Fonctionnalités</a></li>
+              <li><a href="#">Tarifs</a></li>
+              <li><a href="#">Témoignages</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Ressources</h4>
+            <ul class="footer-links">
+              <li><a href="#">Centre d'aide</a></li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Formations</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">Statut du service</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Légal</h4>
+            <ul class="footer-links">
+              <li><a href="#">CGU</a></li>
+              <li><a href="#">Confidentialité</a></li>
+              <li><a href="#">Cookies</a></li>
+              <li><a href="#">Mentions légales</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          &copy; 2025 DevisBâtiment Pro. Tous droits réservés.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

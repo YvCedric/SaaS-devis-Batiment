@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Estimateur MurPro — Calculateur de matériaux pour murs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta
+      name="description"
+      content="Estimez rapidement les quantités de briques, ciment, sable, fer et peinture pour vos murs. Interface simple, mobile-first, conçue pour convertir."
+    />
+  </head>
+  <body class="bg-gray-50 text-gray-800 antialiased">
+    <header class="bg-white shadow-sm sticky top-0 z-30">
+      <div
+        class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a href="#" class="flex items-center gap-3">
+          <svg
+            class="w-8 h-8 text-indigo-600"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <rect
+              x="3"
+              y="3"
+              width="18"
+              height="18"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="1.5"
+            ></rect>
+            <path
+              d="M7 15h10M7 11h10M7 7h6"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="text-lg font-semibold">Estimateur MurPro</span>
+        </a>
+        <nav class="hidden md:flex gap-6 items-center">
+          <a href="#about" class="hover:text-indigo-600">À propos</a>
+          <a href="#features" class="hover:text-indigo-600">Fonctionnalités</a>
+          <a href="#testimonials" class="hover:text-indigo-600">Témoignages</a>
+          <a href="#faq" class="hover:text-indigo-600">FAQ</a>
+          <a
+            href="#contact"
+            class="text-white bg-indigo-600 px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700"
+            >Contact</a
+          >
+        </nav>
+        <div class="md:hidden">
+          <input
+            id="menu-toggle"
+            type="checkbox"
+            class="peer hidden"
+            aria-hidden="true"
+          />
+          <label
+            for="menu-toggle"
+            class="block w-9 h-9 rounded-md ring-1 ring-gray-200 flex items-center justify-center cursor-pointer"
+          >
+            <svg
+              class="w-6 h-6 text-gray-700 peer-checked:hidden"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 7h16M4 12h16M4 17h16"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              class="w-6 h-6 text-gray-700 hidden peer-checked:block"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 6l12 12M6 18L18 6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </label>
+          <div
+            class="absolute right-4 mt-2 w-48 bg-white shadow-lg rounded-md ring-1 ring-gray-200 transform origin-top-right scale-95 opacity-0 pointer-events-none transition-all peer-checked:scale-100 peer-checked:opacity-100 peer-checked:pointer-events-auto"
+          >
+            <div class="flex flex-col p-3">
+              <a href="#about" class="py-2 px-2 rounded hover:bg-gray-100"
+                >À propos</a
+              >
+              <a href="#features" class="py-2 px-2 rounded hover:bg-gray-100"
+                >Fonctionnalités</a
+              >
+              <a
+                href="#testimonials"
+                class="py-2 px-2 rounded hover:bg-gray-100"
+                >Témoignages</a
+              >
+              <a href="#faq" class="py-2 px-2 rounded hover:bg-gray-100">FAQ</a>
+              <a
+                href="#contact"
+                class="mt-2 text-center text-white bg-indigo-600 py-2 rounded"
+                >Contact</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8">
+      <section
+        id="hero"
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+      >
+        <div class="order-2 md:order-1">
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+            Estimations précises pour construire vos murs, en quelques clics
+          </h1>
+          <p class="mt-4 text-gray-600">
+            Calculez la surface des murs, soustrayez ouvertures (portes &
+            fenêtres) et obtenez les quantités nécessaires de briques, ciment,
+            sable, fer et peinture — interface simple, résultats clairs.
+          </p>
+          <div class="mt-6 flex gap-3">
+            <a
+              href="#features"
+              class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700"
+              >Essayer maintenant</a
+            >
+            <a
+              href="#contact"
+              class="inline-block border border-indigo-600 text-indigo-600 px-4 py-2 rounded-md hover:bg-indigo-50"
+              >Demander une démo</a
+            >
+          </div>
+          <ul class="mt-6 grid grid-cols-2 gap-3 text-sm text-gray-600">
+            <li>Calcul instantané</li>
+            <li>Approche mobile-first</li>
+            <li>Unités claires</li>
+            <li>Export & impression</li>
+          </ul>
+        </div>
+        <div class="order-1 md:order-2 flex items-center justify-center">
+          <img
+            src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6b0c6d4b7f6f4e8c4f5c1a3ff8f1b6c6"
+            alt="Murs en construction"
+            class="w-full rounded-lg shadow-lg object-cover h-64 sm:h-80"
+          />
+        </div>
+      </section>
+
+      <section id="about" class="mt-12 bg-white rounded-xl p-6 shadow-sm">
+        <div class="md:flex md:gap-6">
+          <div class="md:w-1/2">
+            <h2 class="text-2xl font-semibold">À propos de MurPro</h2>
+            <p class="mt-3 text-gray-600">
+              MurPro permet aux particuliers, entrepreneurs et architectes
+              d'obtenir rapidement une estimation des matériaux nécessaires pour
+              construire des murs. Plus besoin de calculs manuels : entrez vos
+              longueurs, hauteurs et ouvertures, et obtenez un devis technique
+              instantané.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-gray-600">
+              <li>Rapide et fiable</li>
+              <li>Basé sur standards du marché</li>
+              <li>Exportable & imprimable</li>
+            </ul>
+          </div>
+          <div class="md:w-1/2 mt-6 md:mt-0 flex items-center justify-center">
+            <img
+              src="https://images.unsplash.com/photo-1581092334651-ddf36f6f1c4b?auto=format&fit=crop&w=1200&q=80"
+              alt="Plan et calcul"
+              class="w-full rounded-lg object-cover h-52"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="mt-10">
+        <h3 class="text-xl font-semibold">Fonctionnalités principales</h3>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-md bg-indigo-50 text-indigo-600"
+              >
+                1
+              </div>
+              <div>
+                <h4 class="font-medium">Calcul surface net</h4>
+                <p class="text-sm text-gray-600">
+                  Surface totale des murs moins portes et fenêtres.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-md bg-indigo-50 text-indigo-600"
+              >
+                2
+              </div>
+              <div>
+                <h4 class="font-medium">Briques & matériaux</h4>
+                <p class="text-sm text-gray-600">
+                  Estimation des briques, ciment, sable, fer et enduit selon
+                  standards.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-md bg-indigo-50 text-indigo-600"
+              >
+                3
+              </div>
+              <div>
+                <h4 class="font-medium">Peinture & couches</h4>
+                <p class="text-sm text-gray-600">
+                  Calcul litres de peinture selon 1 ou 2 couches.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-md bg-indigo-50 text-indigo-600"
+              >
+                4
+              </div>
+              <div>
+                <h4 class="font-medium">Mobile-first & responsive</h4>
+                <p class="text-sm text-gray-600">
+                  Conçu pour usage sur chantier depuis smartphone.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-md bg-indigo-50 text-indigo-600"
+              >
+                5
+              </div>
+              <div>
+                <h4 class="font-medium">Impression & export</h4>
+                <p class="text-sm text-gray-600">
+                  Résultats présentés pour impression et partage.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 flex items-center justify-center rounded-md bg-indigo-50 text-indigo-600"
+              >
+                6
+              </div>
+              <div>
+                <h4 class="font-medium">Simplicité d'utilisation</h4>
+                <p class="text-sm text-gray-600">
+                  Interface guidée pour obtenir les estimations en quelques
+                  inputs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="mt-10">
+        <h3 class="text-xl font-semibold">Ils nous font confiance</h3>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <figure class="bg-white p-4 rounded-lg shadow-sm">
+            <blockquote class="text-gray-700">
+              “MurPro m'a fait gagner des heures sur mes devis. Les quantités
+              sont claires et fiables.”
+            </blockquote>
+            <figcaption class="mt-3 text-sm text-gray-600">
+              — A. Dupont, Entrepreneur
+            </figcaption>
+          </figure>
+          <figure class="bg-white p-4 rounded-lg shadow-sm">
+            <blockquote class="text-gray-700">
+              “Application simple, idéale pour vérifier rapidement les besoins
+              matériaux.”
+            </blockquote>
+            <figcaption class="mt-3 text-sm text-gray-600">
+              — S. Martin, Auto-constructeur
+            </figcaption>
+          </figure>
+          <figure class="bg-white p-4 rounded-lg shadow-sm">
+            <blockquote class="text-gray-700">
+              “Parfait pour préparer mes achats chantier sans surprise.”
+            </blockquote>
+            <figcaption class="mt-3 text-sm text-gray-600">
+              — L. Raharijaona, Architecte
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="faq" class="mt-10 bg-white p-6 rounded-xl shadow-sm">
+        <h3 class="text-xl font-semibold">Questions fréquentes</h3>
+        <div class="mt-4 space-y-3">
+          <details class="p-3 rounded-md ring-1 ring-gray-100">
+            <summary class="font-medium cursor-pointer">
+              Comment sont calculées les briques nécessaires ?
+            </summary>
+            <p class="mt-2 text-gray-600 text-sm">
+              Le calcul se base sur une dimension standard de brique et la
+              surface nette des murs après déduction des ouvertures.
+            </p>
+          </details>
+          <details class="p-3 rounded-md ring-1 ring-gray-100">
+            <summary class="font-medium cursor-pointer">
+              Puis-je personnaliser les dimensions des portes et fenêtres ?
+            </summary>
+            <p class="mt-2 text-gray-600 text-sm">
+              La version SaaS permet d’ajuster les dimensions des ouvertures
+              pour des estimations précises.
+            </p>
+          </details>
+          <details class="p-3 rounded-md ring-1 ring-gray-100">
+            <summary class="font-medium cursor-pointer">
+              Les quantités tiennent-elles compte des pertes ?
+            </summary>
+            <p class="mt-2 text-gray-600 text-sm">
+              Les estimations incluent une marge standard ; vous pouvez ajuster
+              selon votre pratique locale.
+            </p>
+          </details>
+          <details class="p-3 rounded-md ring-1 ring-gray-100">
+            <summary class="font-medium cursor-pointer">
+              Peut-on imprimer ou exporter les résultats ?
+            </summary>
+            <p class="mt-2 text-gray-600 text-sm">
+              Oui, les résultats sont conçus pour être imprimés ou exportés au
+              format PDF via le navigateur.
+            </p>
+          </details>
+          <details class="p-3 rounded-md ring-1 ring-gray-100">
+            <summary class="font-medium cursor-pointer">
+              Le service est-il sécurisé ?
+            </summary>
+            <p class="mt-2 text-gray-600 text-sm">
+              Les données sensibles sont protégées via SSL et stockées selon les
+              standards de sécurité.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contact" class="mt-10">
+        <div
+          class="bg-white p-6 rounded-xl shadow-sm md:flex md:items-center md:gap-6"
+        >
+          <div class="md:w-1/2">
+            <h3 class="text-xl font-semibold">Contactez-nous</h3>
+            <p class="mt-2 text-gray-600">
+              Envie d'une démo personnalisée ou d'un plan tarifaire pour votre
+              entreprise ? Envoyez-nous un message.
+            </p>
+            <form class="mt-4 grid gap-3">
+              <input
+                type="text"
+                placeholder="Votre nom"
+                class="w-full px-3 py-2 rounded-md ring-1 ring-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                class="w-full px-3 py-2 rounded-md ring-1 ring-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              />
+              <textarea
+                rows="4"
+                placeholder="Message"
+                class="w-full px-3 py-2 rounded-md ring-1 ring-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              ></textarea>
+              <div class="flex gap-3">
+                <button
+                  type="submit"
+                  class="bg-indigo-600 text-white px-4 py-2 rounded-md"
+                >
+                  Envoyer
+                </button>
+                <button
+                  type="reset"
+                  class="border border-gray-300 px-4 py-2 rounded-md"
+                >
+                  Réinitialiser
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="md:w-1/2 mt-6 md:mt-0">
+            <img
+              src="https://images.unsplash.com/photo-1596496050915-0adf1fc03c61?auto=format&fit=crop&w=1200&q=80"
+              alt="Contact illustration"
+              class="w-full rounded-lg object-cover h-48"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mt-12 bg-white border-t">
+      <div
+        class="max-w-5xl mx-auto px-4 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+      >
+        <div>
+          <a href="#" class="flex items-center gap-3">
+            <svg
+              class="w-8 h-8 text-indigo-600"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="2"
+                stroke="currentColor"
+                stroke-width="1.5"
+              ></rect>
+              <path
+                d="M7 15h10M7 11h10M7 7h6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="font-semibold">Estimateur MurPro</span>
+          </a>
+          <p class="text-sm text-gray-600 mt-2">
+            © 2025 MurPro. Tous droits réservés.
+          </p>
+        </div>
+        <div class="flex gap-4">
+          <a
+            href="#"
+            class="text-gray-600 hover:text-indigo-600"
+            aria-label="Twitter"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22 5.92a8.19 8.19 0 0 1-2.36.65 4.12 4.12 0 0 0 1.8-2.27 8.2 8.2 0 0 1-2.6.99 4.1 4.1 0 0 0-7 3.74A11.65 11.65 0 0 1 3.15 4.6a4.1 4.1 0 0 0 1.27 5.47 4.07 4.07 0 0 1-1.86-.51v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 2 19.54a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.26 11.68-11.68v-.53A8.37 8.37 0 0 0 22 5.92z"
+              />
+            </svg>
+          </a>
+          <a
+            href="#"
+            class="text-gray-600 hover:text-indigo-600"
+            aria-label="LinkedIn"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.6h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6v7H19v-6.2c0-1.4 0-3.1-1.9-3.1-1.9 0-2.2 1.5-2.2 3v6.3H9z"
+              />
+            </svg>
+          </a>
+          <a
+            href="#"
+            class="text-gray-600 hover:text-indigo-600"
+            aria-label="Facebook"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22 12a10 10 0 1 0-11.5 9.87v-6.99H7.9v-2.88h2.6V9.4c0-2.57 1.53-3.99 3.87-3.99 1.12 0 2.3.2 2.3.2v2.53h-1.3c-1.29 0-1.69.8-1.69 1.62v1.94h2.86l-.46 2.88h-2.4V21.9A10 10 0 0 0 22 12z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

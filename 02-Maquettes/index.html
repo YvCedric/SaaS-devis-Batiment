@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeviStone – Estimez & planifiez vos devis de construction</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-white shadow fixed w-full z-10">
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold text-green-600">DeviStone</a>
+        <div class="space-x-6">
+          <a href="#features" class="hover:text-green-600">Fonctionnalités</a>
+          <a href="#pricing" class="hover:text-green-600">Tarifs</a>
+          <a href="#contact" class="hover:text-green-600">Inscription</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-24 bg-white">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-5xl font-bold mb-4">
+          Obtenez un devis fiable en moins de 2 minutes
+        </h1>
+        <p class="text-xl mb-8">
+          De l’idée à la réalisation, chiffrer votre projet de maison en brique
+          ou parpaing n’a jamais été aussi simple.
+        </p>
+        <form action="/signup" method="post" class="max-w-lg mx-auto flex">
+          <input
+            type="email"
+            name="email"
+            placeholder="Votre email"
+            required
+            class="flex-1 p-3 border rounded-l-lg focus:outline-none"
+          />
+          <button
+            type="submit"
+            class="bg-green-600 text-white px-6 rounded-r-lg hover:bg-green-700"
+          >
+            Me tenir informé
+          </button>
+        </form>
+        <p class="text-sm text-gray-500 mt-4">Lancement prévu dans :</p>
+        <div id="countdown" class="text-2xl font-bold mt-2">
+          00j 12h 34m 56s
+        </div>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="container mx-auto px-6 py-16">
+      <h2 class="text-3xl font-semibold text-center mb-12">
+        Pourquoi DeviStone ?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="text-center">
+          <div class="text-5xl mb-4">🧱</div>
+          <h3 class="font-bold text-xl mb-2">Chiffrage instantané</h3>
+          <p>
+            Quantité de briques, mortier, béton et matériaux calculés en temps
+            réel.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">⚙️</div>
+          <h3 class="font-bold text-xl mb-2">Personnalisation totale</h3>
+          <p>
+            Ajustez prix unitaires, épaisseurs, options finitions et plus
+            encore.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">📄</div>
+          <h3 class="font-bold text-xl mb-2">Document professionnel</h3>
+          <p>
+            Générez un devis PDF complet avec logo, mentions légales et
+            conditions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Preview Section -->
+    <section class="bg-gray-100 py-16">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-semibold mb-8">
+          Découvrez DeviStone en vidéo
+        </h2>
+        <div class="relative" style="padding-top: 56.25%">
+          <iframe
+            class="absolute top-0 left-0 w-full h-full rounded-lg shadow"
+            src="https://www.youtube.com/embed/UqFcfcJYIgA"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="container mx-auto px-6 py-16">
+      <h2 class="text-3xl font-semibold text-center mb-12">Nos Offres</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+          <h3 class="text-2xl font-bold mb-4">Gratuit</h3>
+          <p class="mb-6">3 devis/mois • Basics features</p>
+          <ul class="mb-6 text-left space-y-2">
+            <li>Chiffrage Murs & Dalles</li>
+            <li>PDF basique</li>
+            <li>Options limitées</li>
+          </ul>
+          <a
+            href="/signup?plan=free"
+            class="block bg-green-500 text-white py-2 rounded hover:bg-green-600"
+            >Je m'inscris</a
+          >
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow border-2 border-green-600">
+          <h3 class="text-2xl font-bold mb-4">Pro</h3>
+          <p class="mb-6">Devis illimités • Toutes fonctionnalités</p>
+          <ul class="mb-6 text-left space-y-2">
+            <li>Caractéristiques complètes</li>
+            <li>Historique & Multi-projets</li>
+            <li>API & Intégrations</li>
+          </ul>
+          <a
+            href="/signup?plan=pro"
+            class="block bg-green-600 text-white py-2 rounded hover:bg-green-700"
+            >Je m'abonne</a
+          >
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg">
+          <h3 class="text-2xl font-bold mb-4">Entreprise</h3>
+          <p class="mb-6">Solution sur-mesure • Tarifs à la demande</p>
+          <ul class="mb-6 text-left space-y-2">
+            <li>Support dédié</li>
+            <li>Installation privé cloud</li>
+            <li>Formation & onboarding</li>
+          </ul>
+          <a
+            href="/contact"
+            class="block bg-green-500 text-white py-2 rounded hover:bg-green-600"
+            >Contactez-nous</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-semibold text-center mb-8">Ils en parlent</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <blockquote class="bg-white p-6 rounded-lg shadow">
+            <p>
+              “DeviStone est l'outil le plus rapide que j'ai utilisé pour mes
+              devis de construction.”
+            </p>
+            <footer class="mt-4 text-sm text-gray-600">
+              — Laura M., Architecte
+            </footer>
+          </blockquote>
+          <blockquote class="bg-white p-6 rounded-lg shadow">
+            <p>
+              “Les fonctionnalités Pro m'ont permis de gérer plusieurs projets
+              efficacement.”
+            </p>
+            <footer class="mt-4 text-sm text-gray-600">
+              — Karim B., Maçon
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-100 py-16">
+      <div class="container mx-auto px-6 max-w-3xl">
+        <h2 class="text-3xl font-semibold text-center mb-8">FAQ</h2>
+        <div class="space-y-4">
+          <details class="bg-white p-4 rounded-lg shadow">
+            <summary class="font-semibold cursor-pointer">
+              Comment personnaliser les tarifs unitaires ?
+            </summary>
+            <p class="mt-2">
+              Rendez-vous dans les Paramètres de votre compte pour ajuster
+              chaque prix.
+            </p>
+          </details>
+          <details class="bg-white p-4 rounded-lg shadow">
+            <summary class="font-semibold cursor-pointer">
+              Puis-je exporter mes devis ?
+            </summary>
+            <p class="mt-2">
+              Oui, en PDF et au format Excel via la section Export.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="container mx-auto px-6 py-16 text-center">
+      <h2 class="text-3xl font-semibold mb-4">Prêt à essayer DeviStone ?</h2>
+      <a
+        href="/signup"
+        class="bg-green-600 text-white py-3 px-8 rounded-lg hover:bg-green-700"
+        >Créer mon compte gratuitement</a
+      >
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6">
+      <div class="container mx-auto px-6 text-center">
+        <p>&copy; 2025 DeviStone. Tous droits réservés.</p>
+        <nav class="mt-4">
+          <a href="/privacy" class="mx-2 hover:text-white"
+            >Politique de confidentialité</a
+          >
+          <a href="/terms" class="mx-2 hover:text-white">CGU</a>
+          <a href="/contact" class="mx-2 hover:text-white">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Countdown Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const launchDate = new Date(
+          new Date().setDate(new Date().getDate() + 14)
+        );
+        const countdownEl = document.getElementById("countdown");
+        setInterval(() => {
+          const now = new Date();
+          const diff = launchDate - now;
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const mins = Math.floor((diff / (1000 * 60)) % 60);
+          const secs = Math.floor((diff / 1000) % 60);
+          countdownEl.textContent = `${days}j ${hours}h ${mins}m ${secs}s`;
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
