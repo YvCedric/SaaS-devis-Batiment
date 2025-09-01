@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="relative overflow-x-auto">
+      <table
+        id="devisTable"
+        border="1"
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="px-6 py-3">Description</th>
+            <th scope="col" class="px-6 py-3">Valeur</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Les données seront insérées ici par JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+    // === CONSTANTES (dimensions et coefficients standards) ===
+    const SURFACE_PORTE = 0.9 * 2.1; // m² (90 cm x 210 cm)
+    const SURFACE_FENETRE = 1.2 * 1.2; // m² (120 cm x 120 cm)
+    const SURFACE_BRIQUE = 0.2 * 0.1; // m² (20 cm x 10 cm)
+    const MORTIER_PAR_M2 = 0.03; // m³ par m² de mur
+    const SABLE_PAR_M3_MORTIER = 0.5; // m³ par m³ de mortier
+    const CIMENT_PAR_M3_MORTIER = 7; // sacs de 50 kg par m³
+    const ENDUI_PAR_M2 = 5; // kg par m² (1 couche)
+    const PEINTURE_PAR_M2 = 0.2; // L par m² par couche
+    const FER_BETON_PAR_M2 = 8; // kg par m²
+
+    // === FORMULES ===
+
+    // Surface totale des murs
+    function calculSurfaceMurs(longueur, hauteur) {
+      return longueur * hauteur;
+    }
+
+    // Surface totale des ouvertures
+    function calculSurfaceOuvertures(nbPortes, nbFenetres) {
+      return nbPortes * SURFACE_PORTE + nbFenetres * SURFACE_FENETRE;
+    }
+
+    // Surface nette (murs - ouvertures)
+    function calculSurfaceNette(surfaceMurs, surfaceOuvertures) {
+      return surfaceMurs - surfaceOuvertures;
+    }
+
+    // Nombre de briques
+    function calculNombreBriques(surfaceNette) {
+      return Math.ceil(surfaceNette / SURFACE_BRIQUE);
+    }
+
+    // Volume de mortier
+    function calculVolumeMortier(surfaceNette) {
+      return surfaceNette * MORTIER_PAR_M2;
+    }
+
+    // Sable nécessaire (m³)
+    function calculSable(volumeMortier) {
+      return volumeMortier * SABLE_PAR_M3_MORTIER;
+    }
+
+    // Ciment nécessaire (en sacs)
+    function calculCiment(volumeMortier) {
+      return Math.ceil(volumeMortier * CIMENT_PAR_M3_MORTIER);
+    }
+
+    // Quantité de fer à béton (kg)
+    function calculFer(surfaceNette) {
+      return surfaceNette * FER_BETON_PAR_M2;
+    }
+
+    // Enduit (kg)
+    function calculEnduit(surfaceNette, couches = 1) {
+      return surfaceNette * ENDUI_PAR_M2 * couches;
+    }
+
+    // Peinture (litres)
+    function calculPeinture(surfaceNette, couches = 1) {
+      return surfaceNette * PEINTURE_PAR_M2 * couches;
+    }
+
+    // === FONCTION GLOBALE POUR OBTENIR TOUS LES RESULTATS ===
+    function calculerDevis({
+      longueur,
+      hauteur,
+      nbPortes,
+      nbFenetres,
+      couchesPeinture = 1,
+    }) {
+      const surfaceMurs = calculSurfaceMurs(longueur, hauteur);
+      const surfaceOuvertures = calculSurfaceOuvertures(
+        nbPortes,
+        nbFenetres
+      ).toFixed(2);
+      const surfaceNette = calculSurfaceNette(surfaceMurs, surfaceOuvertures);
+      const volumeMortier = calculVolumeMortier(surfaceNette);
+
+      return {
+        surfaceMurs,
+        surfaceOuvertures,
+        surfaceNette,
+        briques: calculNombreBriques(surfaceNette),
+        mortier: volumeMortier.toFixed(2) + " m³",
+        sable: calculSable(volumeMortier).toFixed(2) + " m³",
+        ciment: calculCiment(volumeMortier) + " sacs (50kg)",
+        fer: calculFer(surfaceNette).toFixed(2) + " kg",
+        enduit: calculEnduit(surfaceNette).toFixed(2) + " kg",
+        peinture:
+          calculPeinture(surfaceNette, couchesPeinture).toFixed(2) + " L",
+      };
+    }
+
+    // === EXEMPLE D'UTILISATION ===
+    const devis = calculerDevis({
+      longueur: 50, // m
+      hauteur: 3, // m
+      nbPortes: 4,
+      nbFenetres: 6,
+      couchesPeinture: 2,
+    });
+
+    function afficherDevis(devis) {
+      const tbody = document.querySelector("#devisTable tbody");
+      tbody.innerHTML = `
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Surface des murs
+        </th>
+        <td class="px-6 py-4">
+          ${devis.surfaceMurs} m²
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Surface des ouvertures
+        </th>
+        <td class="px-6 py-4">
+          ${devis.surfaceOuvertures} m²
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Surface nette
+        </th>
+        <td class="px-6 py-4">
+          ${devis.surfaceNette} m²
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Nombre de briques
+        </th>
+        <td class="px-6 py-4">
+         ${devis.briques}
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Mortier
+        </th>
+        <td class="px-6 py-4">
+          ${devis.mortier}
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Sable
+        </th>
+        <td class="px-6 py-4">
+          ${devis.sable}
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Ciment
+        </th>
+        <td class="px-6 py-4">
+          ${devis.ciment}
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Fer
+        </th>
+        <td class="px-6 py-4">
+          >${devis.fer}
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Enduit
+        </th>
+        <td class="px-6 py-4">
+          ${devis.enduit}
+        </td>
+      </tr>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          Peinture
+        </th>
+        <td class="px-6 py-4">
+          >${devis.peinture}
+        </td>
+      </tr>
+    `;
+    }
+
+    afficherDevis(devis);
+  </script>
+</html>
